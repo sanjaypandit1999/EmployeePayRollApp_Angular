@@ -45,7 +45,7 @@ export class AddEmployeeComponent implements OnInit {
       empGender: new FormControl('', Validators.required),
       department: this.formBuilder.array([], Validators.required),
       empSalary: new FormControl('', Validators.required),
-      startDate: new FormControl('', Validators.required),
+    //  startDate: new FormControl('', Validators.required),
       note: new FormControl('', Validators.required),
     })
   }
