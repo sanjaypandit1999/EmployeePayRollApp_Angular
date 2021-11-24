@@ -1,12 +1,13 @@
 <div class="main-content">
     <div class="header-content">
         <div class="emp-detail-text">
-            Employee Details
+            Employee Details<div class="emp-count">{{employeeCount}}</div>
         </div>
         <a class="add-button" routerLink="/addemployee"><img src="../assets/icons/add-24px.svg" alt="Icon">Add User</a>
     </div>
     <div class="table-main">
-        <table class="table" id="display">
+        <table id="display" class="table">
+            <!--Table header-->
             <tr>
                 <th></th>
                 <th>Name</th>
@@ -14,21 +15,28 @@
                 <th>Department</th>
                 <th>Salary</th>
                 <th>Start Date</th>
+                <th>Note</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-                <td><img class="profile" alt="" src="../assets/profile-images/Ellipse -9.png"></td>
-                <td>Sanjay Pandit</td>
-                <td>Male</td>
+            <!--Table Details-->
+            <tr *ngFor="let employee of employeepayrollList; let i=index">
                 <td>
-                    <div class="dept-label">HR</div>
-                    <div class="dept-label">Finance</div>
-                </td >
-                <td>300000</td>
-                <td>1 Nov 2020</td>
+                    <img class="profile" src={{employee.profilePic}} alt="">
+                </td>
+                <td>{{employee.empName}}</td>
+                <td>{{employee.empGender}}</td>
                 <td>
-                    <img id="1" alt="delete" src="../assets/icons/delete-black-18dp.svg" >
-                    <img id="1" alt="Edit" src="../assets/icons/create-black-18dp.svg">
+                    <div class="dept-label">
+                        Hr,Engineer
+                    </div>
+                </td>
+                <td>&#8377; {{employee.empSalary}}</td>
+                <td>11/06/2021</td>
+                <td>{{employee.note}}</td>
+
+                <td>
+                    <img id={{i}} (click)="remove(i)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    <img id={{i}} (click)="update(i)" src="../assets/icons/create-black-18dp.svg" alt="edit">
                 </td>
             </tr>
         </table>

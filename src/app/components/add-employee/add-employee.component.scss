@@ -69,6 +69,9 @@ label {
     margin-right: 15px;
 }
 
+.salary-input {
+    width: 500px;
+}
 
 select {
     padding: 12px;
@@ -115,20 +118,8 @@ select {
 }
 
 .resetButton {
-    margin-right: 10px;
+    margin-right: 1px;
 }
-
-error-output {
-    font-size: 15px;
-    font-style: italic;
-    color: rgb(231, 66, 66);
-}
-
-a.button:hover {
-    background: grey;
-    color: white;
-}
-
 .submitButton:hover {
     background-color: #82A70C;
     color: white;
@@ -138,8 +129,7 @@ a.button:hover {
     background: grey;
     color: white;
 }
-
-.checkbox {
-    flex-direction: row;
-    margin-right: 10px;
+.cancelButton:hover{
+    background:red;
+    color: white;
 }

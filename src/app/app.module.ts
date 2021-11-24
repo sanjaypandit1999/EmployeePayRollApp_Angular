@@ -13,6 +13,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatSliderModule,
     MatDatepickerModule,
-    MatButtonModule,FormsModule,ReactiveFormsModule
+    MatButtonModule,FormsModule,ReactiveFormsModule,MatDialogModule,HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { 
+      provide: MatDialogRef,
+      useValue: []
+       }, 
+      { 
+      provide: MAT_DIALOG_DATA, 
+      useValue: [] 
+      }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
