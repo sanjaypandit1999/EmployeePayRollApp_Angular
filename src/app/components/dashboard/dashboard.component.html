@@ -19,24 +19,24 @@
                 <th>Actions</th>
             </tr>
             <!--Table Details-->
-            <tr *ngFor="let employee of employeepayrollList; let i=index">
+            <tr *ngFor="let employee of employeepayrollList">
                 <td>
                     <img class="profile" src={{employee.profilePic}} alt="">
                 </td>
-                <td>{{employee.empName}}</td>
-                <td>{{employee.empGender}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.gender}}</td>
                 <td>
                     <div class="dept-label">
                         Hr,Engineer
                     </div>
                 </td>
-                <td>&#8377; {{employee.empSalary}}</td>
+                <td>&#8377; {{employee.salary}}</td>
                 <td>11/06/2021</td>
                 <td>{{employee.note}}</td>
 
                 <td>
-                    <img id={{i}} (click)="remove(i)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                    <img id={{i}} (click)="update(i)" src="../assets/icons/create-black-18dp.svg" alt="edit">
+                    <img id={{employee.employeeId}} (click)="remove(employee.employeeId)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    <img id={{employee.employeeId}} (click)="update(employee)" src="../assets/icons/create-black-18dp.svg" alt="edit">
                 </td>
             </tr>
         </table>

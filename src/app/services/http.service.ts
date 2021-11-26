@@ -7,13 +7,14 @@ import { environment } from 'src/environments/environment';
 })
 export class HttpService {
   baseurl = environment.baseUrl;
-  basurlNotes = environment.baseUrlNotes;
   constructor(private http: HttpClient) { }
+
   public postRequest(url: any, data: any): any {
     console.log('data--->', data);
     console.log('url-->', url);
     return this.http.post(this.baseurl + url, data);
   }
+
   public putRequest(url: any, data: any): any {
     console.log('data--->', data);
     return this.http.put(this.baseurl + url, data);
@@ -27,5 +28,5 @@ export class HttpService {
     console.log('data--->', url);
     return this.http.get(this.baseurl + url);
   }
-  
+
 }

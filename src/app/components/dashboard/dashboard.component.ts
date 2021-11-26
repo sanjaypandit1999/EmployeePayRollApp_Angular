@@ -12,17 +12,20 @@ export class DashboardComponent implements OnInit {
   employeepayrollList: any;
   employeeCount: number = 10;
 
-  constructor(public dialog: MatDialog, private httpuserservice: HttpService) { }
+  constructor(public dialog: MatDialog, private httpuserservice: HttpService) {
+    this.ngOnInit();
+   }
 
 
   /**
    * All employee details is populated from the localstorage to the HOME page.
    */
   ngOnInit(): void {
-    this.employeepayrollList = localStorage.getItem('EmployeePayrollList') ?
-      JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
-    this.employeeCount = this.employeepayrollList.length;
-
+    this.httpuserservice.getRequest('/employeepayrollservice/get').subscribe(response=>{
+  //    console.log(response.data)
+      this.employeepayrollList=response.data;
+      this.employeeCount=this.employeepayrollList.length; 
+    })
   }
 
   /**
@@ -31,16 +34,14 @@ export class DashboardComponent implements OnInit {
   * 
   * @param i remove() is invoked for a particular employee index.
   */
-  remove(i: number) {
-    console.log(i);
-    console.log(this.employeepayrollList);
-    if (this.employeepayrollList !== null) {
-      const empList = this.employeepayrollList;
-      empList.splice(i, 1);
-      localStorage.setItem('EmployeePayrollList', JSON.stringify(empList));
-      this.employeeCount = this.employeepayrollList.length;
-    }
-    this.ngOnInit();
+  remove(id: number) {
+    debugger;
+    console.log(id);
+    this.httpuserservice.deleteRequest('/employeepayrollservice/delete/'+id).subscribe(data=> {
+      console.log(data);
+      alert("Employee is deleted")
+      this.ngOnInit();      
+    });
   }
 
 
@@ -50,12 +51,13 @@ export class DashboardComponent implements OnInit {
    * 
    * @param i update() is invoked for a particular employee index.
    */
-  update(i: number) {
+  update(employee) {
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
-      data: i
+      data: employee
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
+      alert("Updated Successfull")
       this.ngOnInit();
     })
   }

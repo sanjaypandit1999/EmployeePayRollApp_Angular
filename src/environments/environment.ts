@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:'http://localhost:8080',
-  baseUrlNotes:'http://localhost:8080/addemployee'
+  baseUrl:'http://localhost:8080'
 };
 
 /*
