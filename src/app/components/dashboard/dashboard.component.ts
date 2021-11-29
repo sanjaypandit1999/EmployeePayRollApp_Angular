@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
 
   /**
-   * All employee details is populated from the localstorage to the HOME page.
+   * All employee details is populated from the Database to the HOME page.
    */
   ngOnInit(): void {
     this.httpuserservice.getRequest('/employeepayrollservice/get').subscribe(response=>{
@@ -29,10 +29,10 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
-  * When the remove() is hit, the employee gets deleted from the localstorage and also the details is removed from the HOME page.
+  * When the remove() is hit, the employee gets deleted from the database and also the details is removed from the HOME page.
   * Thus, a refreshed home page is rendered and a remove message is displayed to the user.
   * 
-  * @param i remove() is invoked for a particular employee index.
+  * @param id remove() is invoked for a particular employee Id.
   */
   remove(id: number) {
     debugger;
@@ -49,10 +49,12 @@ export class DashboardComponent implements OnInit {
    * When the update() is hit, data of a particular index is populate in home page.
    * The page gets navigated to the add page along with the employee object in the body.
    * 
-   * @param i update() is invoked for a particular employee index.
+   * @param employee update() is invoked for a particular employee object from database.
    */
   update(employee) {
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
+      height: '100%',
+      width: '58%',
       data: employee
     });
     dialogRef.afterClosed().subscribe(result => {

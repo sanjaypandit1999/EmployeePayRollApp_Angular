@@ -27,11 +27,11 @@
                 <td>{{employee.gender}}</td>
                 <td>
                     <div class="dept-label">
-                        Hr,Engineer
+                        {{employee.departments}}
                     </div>
                 </td>
                 <td>&#8377; {{employee.salary}}</td>
-                <td>11/06/2021</td>
+                <td>{{employee.startDate | date: 'dd MMM yyyy'}}</td>
                 <td>{{employee.note}}</td>
 
                 <td>
